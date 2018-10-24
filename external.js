@@ -29,6 +29,7 @@ export class Simulatore {
         this.denaro = 100;
         this.salute = 100;
         this.giustizia = 100;
+        this.risposte = [];
     }
 
     getParametri() {
@@ -42,12 +43,12 @@ export class Simulatore {
         this.giustizia += eff.giustizia;
     }
 
-    simula(arr) {
+    simula() {
         this.getParametri();
         let contRisp = 0;
         this.domande.forEach(dom => {
             log(dom.testo+"? : "+ dom.risposta1.testo + " / "+dom.risposta2.testo);
-            if(arr[contRisp] == 0) {
+            if(this.risposte[contRisp] == 0) {
                 this.aggiorna(dom.risposta1.effetto);
             } else {
                 this.aggiorna(dom.risposta2.effetto);
@@ -55,5 +56,13 @@ export class Simulatore {
             this.getParametri();
             contRisp+=1;
         });
+    }
+
+    setRisposte(risposte) {
+        if(typeof(risposte) !== "undefined" && risposte !== null && this.domande.length == risposte.length) {
+            this.risposte = risposte;
+        } else {
+            throw new Error("Errore il numero delle risposte non copre tutte le domande");
+        }
     }
 }
