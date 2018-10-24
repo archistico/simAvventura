@@ -26,11 +26,34 @@ export class Domanda {
 export class Simulatore {
     constructor() {
         this.domande = [];
+        this.denaro = 100;
+        this.salute = 100;
+        this.giustizia = 100;
     }
 
-    simula() {
+    getParametri() {
+        log("Denaro: "+this.denaro+" | Salute: "+this.salute+" | Giustizia: "+this.giustizia);
+        log("-----------------------------");
+    }
+
+    aggiorna(eff) {
+        this.denaro += eff.denaro;
+        this.salute += eff.salute;
+        this.giustizia += eff.giustizia;
+    }
+
+    simula(arr) {
+        this.getParametri();
+        let contRisp = 0;
         this.domande.forEach(dom => {
-            log(dom.testo);
+            log(dom.testo+"? : "+ dom.risposta1.testo + " / "+dom.risposta2.testo);
+            if(arr[contRisp] == 0) {
+                this.aggiorna(dom.risposta1.effetto);
+            } else {
+                this.aggiorna(dom.risposta2.effetto);
+            }
+            this.getParametri();
+            contRisp+=1;
         });
     }
 }

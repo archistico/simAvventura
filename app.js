@@ -23,6 +23,6 @@ sim.domande.push(dom1);
 sim.domande.push(dom2);
 
 log("---START---");
-sim.simula();
+sim.simula([0,1]);
 log(sim);
 log("---STOP----");
