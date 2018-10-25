@@ -65,6 +65,7 @@ export class Simulatore {
         } else {
             this.aggiorna(this.domande[this.contatore].risposta2.effetto);
         }
+        this.avanza();
         this.getParametri();
     }
 

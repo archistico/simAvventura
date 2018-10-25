@@ -11,12 +11,14 @@
 
 <body>
     <h1>Avventura</h1>
+    <div id="infoSvg"></div>
     <div id="app">
         {{ domanda }}
         <button v-on:click="risposta1_click">{{ risposta1 }}</button>
         <button v-on:click="risposta2_click">{{ risposta2 }}</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"></script>
     <script type="module" src="app.js"></script>
 </body>
 
